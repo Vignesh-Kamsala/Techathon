@@ -1,0 +1,12 @@
+fastapi
+uvicorn
+langgraph
+langchain
+pydantic
+python-multipart
+httpx
+requests
+pypdf
+langchain-google-genai
+google-generativeai
+python-dotenv

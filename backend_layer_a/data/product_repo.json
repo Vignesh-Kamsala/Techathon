@@ -1,0 +1,88 @@
+[
+    {
+        "sku_id": "SKU-HV-132-630-CU",
+        "product_name": "132kV 1x630mm2 XLPE Copper Cable",
+        "specs": {
+            "voltage": "132kV",
+            "conductor_size_mm2": 630,
+            "conductor_material": "Copper",
+            "insulation": "XLPE",
+            "cores": 1,
+            "sheath": "Lead Alloy",
+            "standard": "IEC 60840"
+        }
+    },
+    {
+        "sku_id": "SKU-MV-33-300-AL",
+        "product_name": "33kV 3x300mm2 XLPE Aluminum Cable",
+        "specs": {
+            "voltage": "33kV",
+            "conductor_size_mm2": 300,
+            "conductor_material": "Aluminum",
+            "insulation": "XLPE",
+            "cores": 3,
+            "armour": "Galvanized Steel Wire",
+            "sheath": "PVC"
+        }
+    },
+    {
+        "sku_id": "SKU-LV-1.1-4-25-FR",
+        "product_name": "1.1kV 4x25mm2 Fire Resistant Cable",
+        "specs": {
+            "voltage": "1.1kV",
+            "conductor_size_mm2": 25,
+            "conductor_material": "Copper",
+            "insulation": "Mica Tape + XLPE",
+            "cores": 4,
+            "sheath": "LSZH",
+            "properties": [
+                "Fire Resistant",
+                "Low Smoke"
+            ]
+        }
+    },
+    {
+        "sku_id": "SKU-MV-11-185-AL",
+        "product_name": "11kV 3x185mm2 XLPE Cable",
+        "specs": {
+            "voltage": "11kV",
+            "conductor_size_mm2": 185,
+            "conductor_material": "Aluminum",
+            "insulation": "XLPE",
+            "cores": 3
+        }
+    },
+    {
+        "sku_id": "SKU-MV-11-240-AL",
+        "product_name": "11kV 3x240mm2 XLPE Cable",
+        "specs": {
+            "voltage": "11kV",
+            "conductor_size_mm2": 240,
+            "conductor_material": "Aluminum",
+            "insulation": "XLPE",
+            "cores": 3
+        }
+    },
+    {
+        "sku_id": "SKU-HV-220-1000-CU",
+        "product_name": "220kV 1x1000mm2 XLPE Copper Cable",
+        "specs": {
+            "voltage": "220kV",
+            "conductor_size_mm2": 1000,
+            "conductor_material": "Copper",
+            "insulation": "XLPE",
+            "cores": 1
+        }
+    },
+    {
+        "sku_id": "SKU-LV-1.1-4-16-CU",
+        "product_name": "1.1kV 4x16mm2 PVC Cable",
+        "specs": {
+            "voltage": "1.1kV",
+            "conductor_size_mm2": 16,
+            "conductor_material": "Copper",
+            "insulation": "PVC",
+            "cores": 4
+        }
+    }
+]

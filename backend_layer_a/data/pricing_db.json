@@ -1,0 +1,30 @@
+{
+    "prices": {
+        "SKU-HV-132-630-CU": 150.00,
+        "SKU-MV-33-300-AL": 45.50,
+        "SKU-LV-1.1-4-25-FR": 12.00,
+        "SKU-MV-11-185-AL": 18.75,
+        "SKU-MV-11-240-AL": 22.00,
+        "SKU-HV-220-1000-CU": 280.00,
+        "SKU-LV-1.1-4-16-CU": 8.50
+    },
+    "tests": {
+        "TEST-TYPE": {
+            "cost": 5000,
+            "billing": "per_batch"
+        },
+        "TEST-ROUTINE": {
+            "cost": 100,
+            "billing": "per_unit"
+        },
+        "TEST-HV": {
+            "cost": 2500,
+            "billing": "per_batch"
+        },
+        "TEST-FR-BURN": {
+            "cost": 1500,
+            "billing": "per_batch"
+        }
+    },
+    "avg_unit_price": 50.00
+}

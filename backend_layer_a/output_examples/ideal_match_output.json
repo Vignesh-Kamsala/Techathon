@@ -1,0 +1,34 @@
+{
+    "rfp_id": "rfp_001",
+    "comment": "Ideal Match Scenario (Hypothetical selection if deadline was earlier)",
+    "grand_total": 1727500.0,
+    "status": "COMPLETED",
+    "consolidated_response": [
+        {
+            "line_item_id": "1",
+            "product_description": "132kV 1x630mm2 XLPE Cable, Copper Conductor, Lead Sheath",
+            "selected_sku": "SKU-HV-132-630-CU",
+            "quantity": 10000,
+            "unit_price": 150.0,
+            "price_estimate": false,
+            "material_total": 1500000.0,
+            "tests_total": 0.0,
+            "line_total": 1500000.0,
+            "status": "STANDARD",
+            "explanation": "Selected SKU-HV-132-630-CU (100.0%) match."
+        },
+        {
+            "line_item_id": "2",
+            "product_description": "33kV 3x300mm2 XLPE Cable, Aluminum Conductor, PVC Oversheath",
+            "selected_sku": "SKU-MV-33-300-AL",
+            "quantity": 5000,
+            "unit_price": 45.5,
+            "price_estimate": false,
+            "material_total": 227500.0,
+            "tests_total": 0.0,
+            "line_total": 227500.0,
+            "status": "STANDARD",
+            "explanation": "Selected SKU-MV-33-300-AL (100.0%) match."
+        }
+    ]
+}

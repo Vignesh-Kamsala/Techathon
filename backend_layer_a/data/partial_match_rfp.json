@@ -1,0 +1,11 @@
+[
+    {
+        "id": "rfp_002",
+        "title": "Specialty Industrial Cabling - Chemical Plant",
+        "issuer": "ChemCorp Industries",
+        "submission_deadline": "2026-02-20T00:00:00Z",
+        "estimated_value": 1200000,
+        "link": "https://demo-rfp.example.com/rfp_002",
+        "scope_excerpt": "Requirement for specialized fire-resistant cables.\nItem 1: 1.1kV 4x25mm2 Fire Resistant Cable, Mica Tape, LSZH Sheath. Quantity: 2000m. \nItem 2: Custom 66kV Submarine Cable, Double Armored. Quantity: 500m. (Note: Non-standard item). \nItem 3: 11kV 3x185mm2 XLPE Cable, Aluminum. Quantity: 1500m."
+    }
+]

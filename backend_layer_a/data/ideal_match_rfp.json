@@ -1,0 +1,11 @@
+[
+    {
+        "id": "rfp_001",
+        "title": "High Voltage Cable Supply for Northern Grid Expansion",
+        "issuer": "National Power Grid Corp",
+        "submission_deadline": "2026-02-28T00:00:00Z",
+        "estimated_value": 5000000,
+        "link": "https://demo-rfp.example.com/rfp_001",
+        "scope_excerpt": "Supply of 15km of 132kV XLPE Cables. \nLine Item 1: 132kV 1x630mm2 XLPE Cable, Copper Conductor, Lead Sheath. Quantity: 10000 meters. Standards: IEC 60840.\nLine Item 2: 33kV 3x300mm2 XLPE Cable, Aluminum Conductor, PVC Oversheath. Quantity: 5000 meters. Tests required: Type Test, Routine Test."
+    }
+]

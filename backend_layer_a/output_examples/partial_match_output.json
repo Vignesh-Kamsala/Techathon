@@ -1,0 +1,47 @@
+{
+    "rfp_id": "rfp_002",
+    "comment": "Auto-selected due to earliest deadline (Feb 20, 2026)",
+    "grand_total": 127125.0,
+    "status": "COMPLETED",
+    "consolidated_response": [
+        {
+            "line_item_id": "1",
+            "product_description": "1.1kV 4x25mm2 Fire Resistant Cable, Mica Tape, LSZH Sheath",
+            "selected_sku": "SKU-LV-1.1-4-25-FR",
+            "quantity": 2000,
+            "unit_price": 12.0,
+            "price_estimate": false,
+            "material_total": 24000.0,
+            "tests_total": 0.0,
+            "line_total": 24000.0,
+            "status": "STANDARD",
+            "explanation": "Selected SKU-LV-1.1-4-25-FR (100.0%) match."
+        },
+        {
+            "line_item_id": "2",
+            "product_description": "Custom 66kV Submarine Cable, Double Armored",
+            "selected_sku": "SKU-HV-132-630-CU",
+            "quantity": 500,
+            "unit_price": 150.0,
+            "price_estimate": false,
+            "material_total": 75000.0,
+            "tests_total": 0.0,
+            "line_total": 75000.0,
+            "status": "MADE_TO_ORDER_REQUIRED",
+            "explanation": "Selected SKU-HV-132-630-CU (0.0%) match. Mismatches: Mismatch voltage: Req '66kV' vs SKU '132kV'"
+        },
+        {
+            "line_item_id": "3",
+            "product_description": "11kV 3x185mm2 XLPE Cable, Aluminum",
+            "selected_sku": "SKU-MV-11-185-AL",
+            "quantity": 1500,
+            "unit_price": 18.75,
+            "price_estimate": false,
+            "material_total": 28125.0,
+            "tests_total": 0.0,
+            "line_total": 28125.0,
+            "status": "STANDARD",
+            "explanation": "Selected SKU-MV-11-185-AL (100.0%) match."
+        }
+    ]
+}
