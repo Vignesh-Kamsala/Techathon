@@ -8,9 +8,18 @@ import uuid
 import asyncio
 from src.state import AgentState
 from src.graph import app_graph
-from src.tools.fetch import fetch_local_rfps, filter_rfps
+from src.tools.fetch import fetch_local_rfps, filter_rfps, scan_urls
 
 app = FastAPI(title="Layer A: RFP Backend")
+
+from fastapi.middleware.cors import CORSMiddleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:5173", "http://localhost:3000", "http://localhost:8080"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 # In-memory store for demo
 pipelines = {}
@@ -27,16 +36,29 @@ class TriggerRequest(BaseModel):
 @app.post("/api/v1/scan")
 async def scan_rfps(request: ScanRequest):
     """
-    Trigger Sales Agent scan (mock).
-    In a real app, this would start a background task.
-    Here we just return the available demo files.
+    Trigger Sales Agent scan.
+    If URLs are provided, simulates web scanning.
+    Otherwise fetches local demo files.
     """
-    rfps = fetch_local_rfps(request.demo)
+    if request.urls:
+        # 1. Scan URLs
+        raw_rfps = scan_urls(request.urls)
+        # 2. Filter 90 days
+        rfps = filter_rfps(raw_rfps)
+        source = "web_scan"
+    else:
+        # Default Demo Mode
+        raw_rfps = fetch_local_rfps(request.demo)
+        rfps = filter_rfps(raw_rfps)
+        source = "local_demo"
+
     scan_id = str(uuid.uuid4())
     return {
         "scan_id": scan_id,
-        "detected_rfps": len(rfps),
-        "rfps": [{"id": r["id"], "title": r["title"], "deadline": r["submission_deadline"]} for r in rfps]
+        "source": source,
+        "detected_count": len(rfps),
+        "total_scanned": len(raw_rfps),
+        "rfps": rfps
     }
 
 @app.post("/api/v1/trigger")

@@ -81,7 +81,7 @@ def run_demo():
     # run_pipeline("MANUAL-SELECT (Ideal Match: rfp_001)", rfp_id="rfp_001")
     
     # Scenario C: URL (Huge RFP)
-    run_pipeline("URL-INGESTION (Complex PDF Simulator)", rfp_url="https://share.google/AT8LkDrHQdAEUJRSg")
+    run_pipeline("URL-INGESTION (Complex PDF Simulator)", rfp_url="https://eproc.isro.gov.in/viewDocumentPT?tenderId=SH202500149001")
 
 if __name__ == "__main__":
     run_demo()

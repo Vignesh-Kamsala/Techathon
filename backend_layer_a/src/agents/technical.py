@@ -1,17 +1,22 @@
 from src.state import AgentState
-from src.tools.product import product_lookup
+from src.data_layer.json_impl import JsonProductRepository
 from src.utils.spec_matcher import calculate_spec_match
 from src.utils.logger import emit_event
 
 def technical_agent(state: AgentState) -> AgentState:
     emit_event("AGENT_START", {"agent": "Technical Agent", "pipeline_id": state["pipeline_id"]})
     
+    # Dependency: Product Repository
+    # In a real DI framework, this would be injected. 
+    # For now, we instantiate the default JSON impl if not in state.
+    repo = state.get("deps", {}).get("product_repo") or JsonProductRepository()
+
     tech_summary = state.get("tech_summary", [])
     response_items = []
     
     for item in tech_summary:
         # 1. Lookup Candidates (Top candidates from repo)
-        candidates = product_lookup(item["specs"])
+        candidates = repo.find_by_specs(item["specs"])
         
         scored_candidates = []
         for sku in candidates:

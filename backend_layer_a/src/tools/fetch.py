@@ -42,3 +42,37 @@ def filter_rfps(rfps: list):
             pass # Invalid date format
             
     return valid_rfps
+
+def scan_urls(urls: list[str]) -> list[dict]:
+    """
+    Simulates scanning a list of URLs.
+    Generates mock RFP objects with deadlines.
+    Some will be within 90 days, some outside.
+    """
+    scanned_rfps = []
+    today = datetime.now()
+    
+    import random
+    
+    for i, url in enumerate(urls):
+        # Generate a random deadline relative to today
+        # Chance to be valid (10-80 days) or invalid (100-200 days)
+        is_valid_date = random.choice([True, True, False]) # 66% chance valid
+        
+        days_offset = random.randint(10, 85) if is_valid_date else random.randint(95, 200)
+        deadline = today + timedelta(days=days_offset)
+        
+        # Create a mock RFP
+        rfp = {
+            "id": f"scan_{i}_{int(today.timestamp())}",
+            "title": f"RFP Detected from {url[:30]}...",
+            "issuer": "Online Source",
+            "submission_deadline": deadline.isoformat(),
+            "scope_excerpt": f"This is an RFP extracted from {url}. It requires high voltage cabling and switchgear...",
+            "estimated_value": random.randint(50000, 500000),
+            "source_url": url,
+            "status": "detected"
+        }
+        scanned_rfps.append(rfp)
+        
+    return scanned_rfps

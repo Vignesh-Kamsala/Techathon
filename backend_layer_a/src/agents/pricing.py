@@ -1,10 +1,14 @@
 from src.state import AgentState
-from src.tools.pricing import get_price_for_sku, get_test_cost
+# from src.tools.pricing import get_price_for_sku, get_test_cost # OLD
+from src.data_layer.json_impl import JsonPricingRepository
 from src.utils.logger import emit_event
 
 def pricing_agent(state: AgentState) -> AgentState:
     emit_event("AGENT_START", {"agent": "Pricing Agent", "pipeline_id": state["pipeline_id"]})
     
+    # Dependency: Pricing Repository
+    repo = state.get("deps", {}).get("pricing_repo") or JsonPricingRepository()
+
     tech_items = state.get("technical_response", [])
     pricing_reqs = {p["item_id"]: p.get("tests", []) for p in state.get("pricing_summary", [])}
     
@@ -16,7 +20,7 @@ def pricing_agent(state: AgentState) -> AgentState:
         item_id = item["line_item_id"]
         
         # 1. Base Price (Dummy pricing table rule)
-        price_info = get_price_for_sku(sku_id)
+        price_info = repo.get_price_for_sku(sku_id)
         unit_price = price_info["price"]
         is_estimate = price_info["is_estimate"] # Fallback flag
         
@@ -29,7 +33,7 @@ def pricing_agent(state: AgentState) -> AgentState:
         req_tests = pricing_reqs.get(item_id, [])
         
         for t_name in req_tests:
-            t_info = get_test_cost(t_name)
+            t_info = repo.get_test_cost(t_name)
             cost = t_info["cost"]
             billing = t_info.get("billing", "per_unit")
             
@@ -59,7 +63,10 @@ def pricing_agent(state: AgentState) -> AgentState:
             "tests_total": tests_cost_total,
             "line_total": line_total,
             "status": item["status"],
-            "explanation": item["explanation"] # Carry over explanation for UI captions
+            "explanation": item["explanation"],
+            # Preserve Technical details for UI
+            "comparison_table": item.get("comparison_table", []),
+            "match_details": item.get("match_details", {})
         })
 
     emit_event("AGENT_OUTPUT", {

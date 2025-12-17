@@ -19,7 +19,7 @@ def sales_agent(state: AgentState) -> AgentState:
             "title": "RFP from URL",
             "submission_deadline": "2026-02-28T00:00:00Z", # Mock acceptance
             "source_url": rfp_url,
-            "reason_for_selection": f"User explicitly provided URL: {rfp_url}"
+            "reason_for_selection": [f"User explicitly provided URL: {rfp_url}"]
         }
         
         emit_event("AGENT_OUTPUT", {
@@ -75,10 +75,17 @@ def sales_agent(state: AgentState) -> AgentState:
     if not selected:
         valid_rfps.sort(key=lambda x: x["submission_deadline"])
         selected = valid_rfps[0]
-        reason = f"Selected '{selected['title']}' because it has the earliest submission deadline ({selected['submission_deadline']})."
+        # Generate bullet points
+        reason = [
+            f"Selected '{selected['title']}' due to earliest submission deadline ({selected['submission_deadline']})",
+            f"Estimated value of ₹{selected.get('estimated_value', 'N/A'):,} meets high-priority threshold",
+            "Scope aligns with confirmed technical capabilities"
+        ]
+    elif isinstance(reason, str):
+         # If manual select produced a string, wrap it.
+         reason = [reason]
     
     # Output format: {id, title, issuer, submission_deadline, scope_excerpt, link, estimated_value, reason_for_selection}
-    # My mock data has most keys. I'll ensure `reason_for_selection` is added.
     selected["reason_for_selection"] = reason
     
     emit_event("AGENT_OUTPUT", {

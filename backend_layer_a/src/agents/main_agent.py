@@ -121,27 +121,18 @@ def main_agent_end(state: AgentState) -> AgentState:
     
     # Consolidate Everything
     tech_response = state.get("technical_response", [])
-    pricing_response = state.get("pricing_response", []) # This will come from Pricing Agent
-    
-    # Merge logic: Pricing Agent output should be the master "Table" with prices, 
-    # but let's ensure we have everything. 
-    # Actually Pricing Agent "Returns a consolidated price table". 
-    # So Main Agent just wraps it into the Final JSON structure.
+    pricing_data = state.get("pricing_response", {})
     
     final_package = {
-        "rfp_id": state.get("selected_rfp_id"),
-        "timestamp": state.get("pipeline_id"),
-        "consolidated_response": pricing_response, # The table from pricing agent
+        "rfp_id": state["selected_rfp"]["id"],
         "status": "COMPLETED",
-        "metrics": {
-             "total_items": len(pricing_response)
-        }
+        "grand_total": pricing_data.get("grand_total", 0),
+        "consolidated_response": pricing_data.get("consolidated_table", []),
+        "technical_summary": state.get("tech_summary", []),
+        "pricing_summary": state.get("pricing_summary", [])
     }
-    
-    total_value = sum(item.get("line_total", 0) for item in pricing_response)
-    final_package["grand_total"] = total_value
 
-    emit_event("FINAL_RESPONSE_READY", {"pipeline_id": state["pipeline_id"], "grand_total": total_value})
+    emit_event("FINAL_RESPONSE_READY", {"pipeline_id": state["pipeline_id"], "grand_total": final_package["grand_total"]})
     
     return {
         **state,
